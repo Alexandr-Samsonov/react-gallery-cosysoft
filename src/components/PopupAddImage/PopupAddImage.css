@@ -10,7 +10,7 @@
 }
 
 .popup-add-image--hidden {
-  display: block;
+  display: none;
 }
 
 .popup-add-image__description {
