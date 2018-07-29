@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as imagesActions from '../actions/images';
-import App from '../components/App';
+import Images from '../components/Images/Images';
 
 const mapStateToProps = ({ images }) => ({
-	images,
+	items: images.items,
 });
 
 const mapDispatchToProps = dispatch => ({
 	...bindActionCreators(imagesActions, dispatch),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(Images);

@@ -5,6 +5,17 @@ import '../../scaffolding.css';
 import './PopupAddImage.css';
 
 class PopupAddImage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      url: '',
+      comment: '',
+    }
+    this.changeUrl = this.changeUrl.bind(this);
+    this.changeComment = this.changeComment.bind(this);
+    this.sendForm = this.sendForm.bind(this);
+  }
+
   static propTypes = {
     isOpen: PropTypes.bool,
     isRemove: PropTypes.func,
@@ -24,6 +35,33 @@ class PopupAddImage extends Component {
     document.removeEventListener("keydown", this.props.isEscRemove, false);
   }
 
+  changeUrl(e) {
+    this.setState({
+      url: e.target.value
+    });
+  }
+
+  changeComment(e) {
+    this.setState({
+      comment: e.target.value
+    })
+  }
+
+  sendForm(e) {
+    e.preventDefault();
+    console.log(this.props);
+    const { addImage, isRemoveAfterSend } = this.props;
+    addImage({
+      url: this.state.url,
+      comment: this.state.comment,
+    });
+    this.setState({
+      url: '',
+      comment: '',
+    })
+    isRemoveAfterSend();
+  }
+
   render() {
     let { isOpen, isRemove } = this.props;
     return(
@@ -34,18 +72,18 @@ class PopupAddImage extends Component {
             <div className="popup-add-image__wrapper">
               <label className="popup-add-image__label">
                 Url изображения:
-                <input className="popup-add-image__input" type="text" name="url" />
+                <input className="popup-add-image__input" type="text" name="url" onChange={this.changeUrl} value={this.state.url} />
               </label>
               <span className="popup-add-image__error"></span>
             </div>
             <div className="popup-add-image__wrapper">
               <label className="popup-add-image__label">
                 Комментарий:
-                <input className="popup-add-image__input" type="text" name="comment" />
+                <input className="popup-add-image__input" type="text" name="comment" onChange={this.changeComment} value={this.state.comment} />
               </label>
               <span className="popup-add-image__error"></span>
             </div>
-            <button className="popup-add-image__btn" type="submit">Добавить</button>
+            <button className="popup-add-image__btn" type="submit" onClick={this.sendForm}>Добавить</button>
           </form>
         </div>
       </section>

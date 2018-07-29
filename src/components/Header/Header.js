@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PopupAddImage from '../PopupAddImage/PopupAddImage';
+import PopupAddImage from '../../containers/PopupAddImage';
 
 import '../../scaffolding.css';
 import './Header.css';
@@ -13,6 +13,7 @@ class Header extends Component {
     this.showPopupAddImage = this.showPopupAddImage.bind(this);
     this.removePopupAddImage = this.removePopupAddImage.bind(this);
     this.removeEscPopupAddImage = this.removeEscPopupAddImage.bind(this);
+    this.removePopupAddImageAfterSend = this.removePopupAddImageAfterSend.bind(this);
   }
 
   showPopupAddImage() {
@@ -37,6 +38,12 @@ class Header extends Component {
     }
   }
 
+  removePopupAddImageAfterSend() {
+    this.setState({
+      isOpen: false
+    });
+  }
+
   render() {
     let { isOpen } = this.state;
     return (
@@ -45,7 +52,7 @@ class Header extends Component {
           <h1 className="page-header__title">Gallery Images</h1>
           <a className="page-header__add-image" onClick={this.showPopupAddImage} href="#" title="Добавить изображение в галерею">Добавить IMG</a>
         </div>
-        <PopupAddImage isOpen={isOpen} isRemove={this.removePopupAddImage} isEscRemove={this.removeEscPopupAddImage} />
+        <PopupAddImage isOpen={isOpen} isRemove={this.removePopupAddImage} isEscRemove={this.removeEscPopupAddImage} isRemoveAfterSend={this.removePopupAddImageAfterSend} />
       </header>
     );
   }
