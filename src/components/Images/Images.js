@@ -5,7 +5,7 @@ import '../../scaffolding.css';
 import './Images.css';
 
 class Images extends Component {
-  render() {
+  /*render() {
     const { items } = this.props;
     let images;
     if (items) {
@@ -15,7 +15,7 @@ class Images extends Component {
     } else {
       return images = null;
     }
-  }
+  }*/
 
   render() {
     const { items } = this.props;
@@ -23,7 +23,7 @@ class Images extends Component {
       <section className="images">
         <h2 className="visually-hidden">Список изображений</h2>
         <ul className="images__list">
-          {this.render}
+          { items.map((item, i) => <Image key={i} item={item} />) }
         </ul>
       </section>
     );

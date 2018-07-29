@@ -1,5 +1,10 @@
 const initialState = {
-  items: [],
+  items: [
+    {
+      url: 'https://avatars.mds.yandex.net/get-pdb/770122/1ab4d475-9b9e-45ab-a80a-b86806c24482/s1200',
+      comment: 'Комментарий комментарий'
+    },
+  ],
 };
 
 export default (state = initialState, action) => {
