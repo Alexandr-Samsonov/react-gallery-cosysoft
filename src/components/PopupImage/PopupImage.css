@@ -63,7 +63,8 @@
   text-align: center;
 }
 
-.popup-image__button-edit {
+.popup-image__button-edit,
+.popup-image__button-delete {
   position: relative;
   bottom: 0;
   left: 50%;
@@ -85,7 +86,8 @@
   cursor: pointer;
 }
 
-.popup-image__button-edit:hover {
+.popup-image__button-edit:hover,
+.popup-image__button-delete:hover {
   background-color: rgba(158, 158, 158, 0.6);
 }
 

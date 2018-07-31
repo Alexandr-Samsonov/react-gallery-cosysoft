@@ -52,6 +52,7 @@ class PopupAddImage extends Component {
     console.log(this.props);
     const { addImage, isRemoveAfterSend } = this.props;
     addImage({
+      id: Date.now(),
       url: this.state.url,
       comment: this.state.comment,
     });

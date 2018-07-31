@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PopupImage from './PopupImage/PopupImage';
+import PopupImage from '../containers/PopupImage';
 
 import '../scaffolding.css';
 import './Images/Images.css';
@@ -13,6 +13,7 @@ class Image extends Component {
     this.showPopupImage = this.showPopupImage.bind(this);
     this.removePopupImage = this.removePopupImage.bind(this);
     this.removeEscPopupImage = this.removeEscPopupImage.bind(this);
+    this.removeAfterPopupImage = this.removeAfterPopupImage.bind(this);
   }
 
   showPopupImage() {
@@ -37,6 +38,12 @@ class Image extends Component {
     }
   }
 
+  removeAfterPopupImage() {
+    this.setState({
+      isOpen: false
+    })
+  }
+
   render() {
     const { item } = this.props; 
     return (
@@ -44,7 +51,7 @@ class Image extends Component {
         <a className="images__img" href="#" onClick={this.showPopupImage} style={{ backgroundImage: `url( ${item.url} )` }}>
           <p className="images__comment">{item.comment}</p>
         </a>
-        <PopupImage item={item} isOpen={this.state.isOpen} isRemove={this.removePopupImage} isEscRemove={this.removeEscPopupImage} />
+        <PopupImage item={item} isOpen={this.state.isOpen} isRemove={this.removePopupImage} isEscRemove={this.removeEscPopupImage} isAfterRemove={this.removeAfterPopupImage} />
       </li>
     );
   }
